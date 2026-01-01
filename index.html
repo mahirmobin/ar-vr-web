@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NSDC ARVR Lab - Hardware Inventory</title>
-    
-    <!-- React & Babel -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Encode+Sans+Expanded:wght@600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Wire+One&display=swap" rel="stylesheet">
+
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -17,8 +21,8 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
-            background: #000000;
+            font-family:  "Inter",system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: #14202c;
             color: #f5f5f7;
             line-height: 1.6;
             overflow-x: hidden;
@@ -37,6 +41,8 @@
             background: linear-gradient(135deg, #0a0e27 0%, #1a1a3e 100%);
         }
 
+
+    
         .hero::before {
             content: '';
             position: absolute;
@@ -46,7 +52,7 @@
             border-radius: 50%;
             top: -100px;
             right: -50px;
-            animation: float 6s ease-in-out infinite;
+            animation: float 3s ease-in-out infinite;
         }
 
         .hero::after {
@@ -58,13 +64,29 @@
             border-radius: 50%;
             bottom: -50px;
             left: -100px;
-            animation: float 8s ease-in-out infinite reverse;
+            animation: float 2s ease-in-out infinite reverse;
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px); }
+            0%, 100% { transform: translateX(0px); }
             50% { transform: translateY(20px); }
         }
+
+
+.hero h1 {
+font-family: "Encode Sans Expanded", "Space Grotesk", system-ui, sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+.h2{
+
+    font-family: "Wire One", system-ui, sans-serif;
+    font-weight: 400;
+     font-size: 10rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
 
         .hero-content {
             position: relative;
@@ -76,11 +98,10 @@
         }
 
         .hero h1 {
-            font-size: 5.5rem;
+            font-size: 8rem;
             font-weight: 900;
             line-height: 1.1;
             margin-bottom: 20px;
-            letter-spacing: -0.5px;
             background: linear-gradient(90deg, #ffffff 0%, #0099ff 50%, #ffffff 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -88,7 +109,7 @@
         }
 
         .hero p {
-            font-size: 1.8rem;
+            font-size: 1rem;
             color: #a1a1a6;
             font-weight: 500;
             margin-bottom: 40px;
@@ -100,13 +121,124 @@
             bottom: 40px;
             left: 50%;
             transform: translateX(-50%);
-            z-index: 2;
-            animation: bounce 3s infinite;
+            z-index: 3;
+            animation: bounce 10s infinite;
             font-size: 24px;
         }
 
+        /* === Hero abstract animated background === */
+.hero {
+    position: relative; /* already present, but safe if added */
+    overflow: hidden;
+}
+
+/* Container that holds shapes, behind text */
+.hero-abstract {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;  /* so clicks go to buttons/text */
+    z-index: 0;
+}
+
+/* Generic blob style */
+.hero-blob {
+    position: absolute;
+    width: 340px;
+    height: 340px;
+    border-radius: 999px;
+    filter: blur(40px);
+    opacity: 0.8;
+    mix-blend-mode: screen;
+    animation: float-blob 6s ease-in-out infinite;
+}
+
+/* Individual blob positions + colors */
+.blob-1 {
+    top: -80px;
+    left: -60px;
+    background: radial-gradient(circle at 30% 30%, #00ffc8, transparent 60%);
+}
+
+.blob-2 {
+    top: 40%;
+    right: -120px;
+    width: 420px;
+    height: 420px;
+    background: radial-gradient(circle at 70% 30%, #0099ff, transparent 60%);
+    animation-duration: 28s;
+    animation-direction: reverse;
+}
+
+.blob-3 {
+    bottom: -120px;
+    left: 30%;
+    width: 380px;
+    height: 380px;
+    background: radial-gradient(circle at 40% 60%, #9e9db8, transparent 60%);
+    animation-duration: 32s;
+}
+
+/* Floating animation for blobs */
+@keyframes float-blob {
+    0% {
+        transform: translate3d(0, 0, 0) scale(1);
+        opacity: 0.7;
+    }
+    50% {
+        transform: translate3d(-10px, -50px, 0) scale(1.08);
+        opacity: 0.85;
+    }
+    75% {
+        transform: translate3d(-30px, -10px, 0) scale(1.03);
+        opacity: 0.95;
+    }
+    100% {
+        transform: translate3d(0, 0, 0) scale(1);
+        opacity: 0.7;
+    }
+}
+
+/* Subtle orbits (thin circles) for techy feel */
+.hero-orbit {
+    position: absolute;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    mix-blend-mode: screen;
+    animation: orbit-rotate 5s linear infinite;
+}
+
+.orbit-1 {
+    width: 480px;
+    height: 480px;
+    top: 10%;
+    left: 20%;
+}
+
+.orbit-2 {
+    width: 620px;
+    height: 620px;
+    top: 35%;
+    left: 50%;
+    animation-duration: 60s;
+    animation-direction: reverse;
+}
+
+/* Slow rotation for orbits */
+@keyframes orbit-rotate {
+    from { transform: rotate(0deg) translate3d(0,0,0); }
+    to   { transform: rotate(360deg) translate3d(0,0,0); }
+}
+
+/* Ensure text sits above shapes */
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+
         @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
+            0%, 100% { transform: translateX(-50%) translateX(10px); }
             50% { transform: translateX(-50%) translateY(10px); }
         }
 
@@ -181,19 +313,18 @@
         }
 
         section h2 {
-            font-size: 3.5rem;
-            font-weight: 700;
+          
             margin-bottom: 60px;
             text-align: center;
-            letter-spacing: -0.5px;
+            letter-spacing: 0.5px;
         }
 
         /* Stats Container */
         .stats-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin: 80px 0;
+            gap: 10px;
+            margin: 60px 0;
         }
 
         .stat-card {
@@ -224,7 +355,7 @@
         }
 
         .stat-label {
-            color: #a1a1a6;
+            color: #fafafa;
             font-size: 0.95rem;
             font-weight: 600;
             letter-spacing: 0.5px;
@@ -251,7 +382,7 @@
 
         .hardware-card:hover {
             transform: translateY(-20px);
-            border-color: #4000ff;
+            border-color: #58526c;
             box-shadow: 0 25px 50px rgba(34, 0, 255, 0.25);
             background: linear-gradient(135deg, rgba(0,255,200,0.1) 0%, rgba(0,153,255,0.05) 100%);
         }
@@ -289,8 +420,8 @@
 
         .card-image-wrapper:hover .video-btn {
             background: rgba(170, 170, 170, 0.4);
-            border-color: #4800ff;
-            box-shadow: 0 0 25px rgba(0, 0, 255, 0.6);
+            border-color: #75669d;
+            box-shadow: 0 0 25px rgba(99, 99, 158, 0.6);
             transform: translate(-50%, -50%) scale(1.15);
         }
 
@@ -398,12 +529,10 @@
         }
 
         /* Empty State */
-        .empty-state { text-align: center; padding: 100px 40px; color: #a1a1a6; }
-        .empty-state h2 {
-            font-size: 2rem;
+        .empty-state { text-align: center; padding: 10px 40px; color: #a1a1a6; }
+        .empty-state h2 { 
             margin-bottom: 15px;
             color: #f5f5f7;
-            font-weight: 700;
         }
 
         /* Modal */
@@ -459,15 +588,15 @@
 
         /* Responsive */
         @media (max-width: 1024px) {
-            .hero h1 { font-size: 3.5rem; }
-            section h2 { font-size: 2.5rem; }
+            .hero h1 { font-size: 5rem; }
+            section h2 { font-size: 3rem; }
             .hardware-grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; }
             section { padding: 80px 30px; }
         }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            section h2 { font-size: 2rem; }
+            .hero h1 { font-size: 5rem; }
+            section h2 { font-size: 3rem; }
             section { padding: 50px 20px; }
             .hardware-grid { grid-template-columns: 1fr; gap: 25px; }
             .nav-container { gap: 10px; padding: 0 10px; justify-content: center; }
@@ -498,12 +627,13 @@
          
                  modelUrl: "htc_vive_pro.glb" 
             },
+          
             {
                 name: "Meta Quest 3S Advanced VR Headset",
                 category: "headsets",
                 image:  "metaquest.png",
                 purpose: "All-in-One VR/MR",
-                specs: ["3664 x 1920 pixel resolution", "Mixed Reality capable", "Spatial audio", "3-hour battery life"],
+                specs: ["1832 x 1920 pixel per eye resolution", "Mixed Reality capable", "Spatial audio", "3-hour battery life"],
                 quantity: 3,
                 usage: ["Mixed reality apps", "Content creation", "Gaming & entertainment", "Team collaboration"],
                 
@@ -526,8 +656,148 @@
                 quantity: 1,
                 usage: ["Spatial computing development", "Advanced MR research", "Professional applications", "3D content creation"],
                 
-                modelUrl: "apple_vision_pro.glb"
+                 modelUrl: "apple_vision_pro.glb"
             },
+            {
+    name: "TOURBOX Creative Editing Console",
+    category: "tracking",
+    image: "box.png",
+    purpose: "Creative Editing Controller",
+    specs: [
+        "Compact multi-dial editing console",
+        "Customizable knobs, dials and buttons",
+        "Supports video, photo and audio apps",
+        "USB / Bluetooth connectivity options"
+    ],
+    quantity: 1,
+    usage: [
+        "Timeline scrubbing",
+        "Fine parameter adjustment",
+        "Shortcut workflow control",
+        "Creative editing projects"
+    ]
+}
+,
+                {
+    name: "Mobile-based AR Headsets",
+    category: "ar",
+    image: "https://images.pexels.com/photos/3945683/pexels-photo-3945683.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    purpose: "Phone-driven AR Viewer",
+    specs: [
+        "Smartphone-powered AR/VR viewing",
+        "Supports stereoscopic content",
+        "Adjustable lenses and straps",
+        "Lightweight plastic housing"
+    ],
+    quantity: 2,
+    usage: [
+        "Entry-level AR demos",
+        "Student experiments",
+        "Mobile AR app testing",
+        "Orientation sessions"
+    ]
+}
+,
+{
+    name: "XR Software Platform",
+    category: "xr",
+    image: "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    purpose: "XR Content & Control Suite",
+    specs: [
+        "Centralized XR experience launcher",
+        "Supports VR, AR and MR workflows",
+        "Integration with headsets and scanners",
+        "Session and content management tools"
+    ],
+    quantity: 1,
+    usage: [
+        "Lab session orchestration",
+        "Content deployment",
+        "Live demonstrations",
+        "Faculty workshops"
+    ]
+}
+,
+{
+    name: "Oculus Quest 3 Headset Straps",
+    category: "accessories",
+    image: "https://images.pexels.com/photos/3945664/pexels-photo-3945664.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    purpose: "Comfort & Stability Upgrade",
+    specs: [
+        "Ergonomic replacement straps",
+        "Improved weight distribution",
+        "Adjustable head support",
+        "Compatible with Meta Quest 3"
+    ],
+    quantity: 2,
+    usage: [
+        "Comfort for long sessions",
+        "Lab safety & fit",
+        "Shared device management",
+        "Extended VR training"
+    ]
+}
+,
+{
+    name: "Tablet Stands & Supports",
+    category: "accessories",
+    image: "stand.png",
+    purpose: "Device Mounting & Ergonomics",
+    specs: [
+        "Adjustable viewing angles",
+        "Supports tablets and phones",
+        "Non-slip base construction",
+        "Portable foldable design"
+    ],
+    quantity: 2,
+    usage: [
+        "AR demo setups",
+        "Hands-free viewing",
+        "Desk-based training",
+        "Multi-device layouts"
+    ]
+}
+,
+{
+    name: "Disposable VR Hygiene Masks",
+    category: "accessories",
+    image: "mask.png",
+    purpose: "Hygiene & Safety",
+    specs: [
+        "Single-use headset liners",
+        "Compatible with most VR headsets",
+        "Soft non-woven material",
+        "Helps reduce sweat transfer"
+    ],
+    quantity: 100,
+    usage: [
+        "Hygiene during lab sessions",
+        "Multi-user deployments",
+        "Workshops & FDPs",
+        "Public demos"
+    ]
+}
+,
+{
+    name: "3D-Printed Fixtures & Connectors",
+    category: "accessories",
+    image: "https://images.pexels.com/photos/5474033/pexels-photo-5474033.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    purpose: "Custom Mounts & Cable Management",
+    specs: [
+        "Assorted custom 3D-printed parts",
+        "Supports camera and sensor mounts",
+        "Cable guides and organizers",
+        "Prototyping-friendly components"
+    ],
+    quantity: 1,
+    usage: [
+        "Custom rig building",
+        "Sensor mounting",
+        "Cable routing",
+        "Experiment setups"
+    ]
+}
+,
             {
                 name: "Vive Tracker v2.0 with Calibration Props",
                 category: "tracking",
@@ -807,12 +1077,23 @@
             return (
                 <>
                     <div className="hero">
-                        <div className="hero-content">
-                            <h1>NSDC AR/VR Lab 🔬</h1>
-                            <p>Experience the Future of AR/VR Technology</p>
-                            <div className="scroll-hint">↓</div>
-                        </div>
-                    </div>
+    {/* NEW animated abstract shapes layer */}
+    <div className="hero-abstract">
+        <div className="hero-blob blob-1"></div>
+        <div className="hero-blob blob-2"></div>
+        <div className="hero-blob blob-3"></div>
+        <div className="hero-orbit orbit-1"></div>
+        <div className="hero-orbit orbit-2"></div>
+    </div>
+
+    {/* Existing content layer */}
+    <div className="hero-content">
+        <h1>NSDC AR/VR Lab</h1>
+        <p>Experience the Future of AR/VR Technology</p>
+        <div className="scroll-hint">↓</div>
+    </div>
+</div>
+
 
                     <header>
                         <div className="nav-container">
@@ -831,7 +1112,9 @@
 
                     <section>
                         <h2>Why Choose NSDC ARVR Lab?</h2>
+    
                         <div className="stats-container">
+                            <h1> we have </h1>
                             <div className="stat-card">
                                 <div className="stat-number">{hardwareData.length}</div>
                                 <div className="stat-label">Total Hardware Items</div>
