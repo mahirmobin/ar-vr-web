@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AR/VR Lab Hardware Inventory</title>
+    <title>AR/VR Lab Inventory</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Encode+Sans+Expanded:wght@600;800&display=swap" rel="stylesheet">
@@ -1023,26 +1023,6 @@ font-family: "Encode Sans Expanded", "Space Grotesk", system-ui, sans-serif;
 }
 
 
-        // --- Same Video Modal ---
-        function VideoModal({ videoUrl, onClose }) {
-            if (!videoUrl) return null;
-            return (
-                <div className="modal" onClick={onClose}>
-                    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                        <button className="modal-close" onClick={onClose}>×</button>
-                        <iframe
-                            width="100%" height="500"
-                            src={videoUrl}
-                            title="Hardware Video"
-                            frameBorder="0"
-                            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                            style={{borderRadius: '10px'}}
-                        ></iframe>
-                    </div>
-                </div>
-            );
-        }
 
         // --- Same Main App ---
         function HardwareInventoryApp() {
